@@ -740,6 +740,10 @@ onMounted(() => {
     padding-top: calc($container-padding-x - 2.5rem);
     padding-bottom: calc($container-padding-x - 2.5rem);
 
+    @media(max-width: $sm) {
+        overflow: hidden;
+    }
+
     &-container {
         display: flex;
         flex-direction: column;
