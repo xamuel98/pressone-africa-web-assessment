@@ -136,12 +136,15 @@ onMounted(() => {
                         <div class="pressone-africa-logo-wrapper">
                             <img src="@/assets/images/pressone-africa-logo-2.svg" alt="PressOne Africa Logo">
                         </div>
-                        <div class="pricing-section-container-content--top__pricing-cards">
+                        <div class="pricing-section-container-content--top__pricing-cards" v-if="pricingList">
                             <PricingCard 
                                 v-for="data in pricingList"
                                 :key="data.id"
                                 :data="data"
                             />
+                        </div>
+                        <div class="error" v-else>
+                            <p>Can't retrieve pricing plans!</p>
                         </div>
                     </div>
                     <div class="plan-section">
@@ -161,7 +164,7 @@ onMounted(() => {
                                                     <div class="text-wrapper-6">Agents</div>
                                                 </div>
                                             </div>
-                                            <div class="frame-12">
+                                            <div class="frame-12" v-if="pricingList">
                                                 <div :class="index === 1 ? 'frame-16' : 'frame-13'" v-for="(data, index) in pricingList" :key="data.id">
                                                     <div :class="index === 2 ? 'frame-17' : 'frame-14'">
                                                         <div :class="index === 2 ? 'text-wrapper-8' : 'text-wrapper-7'">{{ data.call_reception }}</div>

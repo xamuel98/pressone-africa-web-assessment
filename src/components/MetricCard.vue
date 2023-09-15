@@ -7,7 +7,7 @@ export default defineComponent({
         text: {
             type: String,
             required: true,
-            default: () => ('')
+            default: () => ('Custom Default Message')
         }
     },
     setup(props) { 

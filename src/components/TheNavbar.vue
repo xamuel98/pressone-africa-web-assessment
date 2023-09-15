@@ -63,13 +63,13 @@ const openCloseSlideInPanel = () => {
 
 onMounted(() => {
     // Hide sidebar panel on browser resize
-    const browserResized = (x: any) => {
-        if (x.matches || panel.value?.classList?.contains('panel-visible')) { // If media query matches
+    const browserResized = (x) => {
+        if (x.matches || panel.value?.classList.contains('panel-visible')) { // If media query matches
             closePanelFunction()
         }
     }
 
-    let x = window.matchMedia("(max-width: 769px)");
+    let x = window.matchMedia("(max-width: 768px)")
     browserResized(x) // Call listener function at run time
     x.addListener(browserResized) // Attach listener function on state changes
 
