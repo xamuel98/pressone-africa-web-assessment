@@ -1,37 +1,3 @@
-// import MatchMediaMock from 'jest-matchmedia-mock';
-// import { mount, VueWrapper } from '@vue/test-utils';
-// import { describe, it, expect, beforeEach, afterEach, beforeAll } from 'vitest';
-// import TheNavbar from '../TheNavbar.vue';
-
-
-// describe('TheNavbar.vue', () => {
-//     let wrapper: VueWrapper<any>;
-//     // let matchMedia: any;
-
-//     beforeAll(() => {
-//         // matchMedia = new MatchMediaMock();
-//         // matchMedia.useMediaQuery("(max-width: 769px)");
-//     });
-
-//     beforeEach(() => {
-//         // Create a shallow wrapper for the component before each test
-//         wrapper = mount(TheNavbar);
-//     });
-
-//     // afterEach(() => {
-//     //     // Destroy the wrapper after each test to clean up
-//     //     wrapper.unmount();
-//     //     // matchMedia.clear();
-//     // });
-
-
-//     it('renders the component without errors', () => {
-//         expect(wrapper.exists()).toBe(true);
-//     });
-
-
-// });
-
 import { mount, VueWrapper } from '@vue/test-utils';
 import { describe, it, expect, beforeEach, beforeAll } from 'vitest';
 import { createRouter, createWebHistory } from 'vue-router';
@@ -44,14 +10,15 @@ describe('TheNavbar', () => {
     let wrapper: VueWrapper<any>;
 
     beforeAll(() => {
+        // To resolve window.matchMedia
         Object.defineProperty(window, "matchMedia", {
             writable: true,
             value: (query: any) => ({
                 matches: false,
                 media: query,
                 onchange: null,
-                addListener: () => {}, // Deprecated
-                removeListener: () => {}, // Deprecated
+                addListener: () => {},
+                removeListener: () => {},
                 addEventListener: () => {},
                 removeEventListener: () => {},
                 dispatchEvent: () => {},
