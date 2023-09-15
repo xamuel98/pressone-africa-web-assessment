@@ -1,5 +1,5 @@
 // Define a base URL for your API
-const baseURL = import.meta.env.VITE_API_BASE_URL;
+const baseURL = `${window.location.href}/api`;
 
 // Function to make a GET request
 export const useApiService = () => {
