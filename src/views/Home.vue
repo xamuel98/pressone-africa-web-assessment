@@ -37,8 +37,10 @@ const fetchPricingData = async() => {
         const response  = await getPricingPlans('swQ1ic'); // GET api call
         pricingList.value = response.data;
 
-        // Get the property names for the last 3 properties (call_reception, calls_per_week, agent)
-        parsedKeys.value = Object.keys(pricingList.value[0]).slice(-3);  
+        if(pricingList.value) {
+            // Get the property names for the last 3 properties (call_reception, calls_per_week, agent)
+            parsedKeys.value = Object.keys(pricingList.value[0]).slice(-3);  
+        }
         
     } catch (error) {
         console.error(error);
