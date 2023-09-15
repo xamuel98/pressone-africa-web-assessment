@@ -1,5 +1,5 @@
 // Define a base URL for your API
-const baseURL = `${window.location.href}/api`;
+const baseURL = `${window.location.href}api`;
 
 // Function to make a GET request
 export const useApiService = () => {
