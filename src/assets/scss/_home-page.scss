@@ -688,6 +688,8 @@
 
             &--bottom {
                 width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
                 table {
                     &.table {
                         width: 100%;
@@ -705,6 +707,8 @@
                             font-style: normal;
                             font-weight: 500;
                             line-height: 140%;
+                            white-space: nowrap;
+                            text-align: left;
 
                             &:first-of-type {
                                 border-radius: 0.5rem 0rem 0rem 0.5rem;
@@ -717,6 +721,15 @@
                                 border-radius: 0rem 0.5rem 0.5rem 0rem;
                             }
                         }
+
+                        > thead > tr > * {
+                            padding-top: 0.5rem;
+                            padding-bottom: 0.5rem;
+                            color: #6c757d !important;
+                            text-align: left;
+                            font-weight: 500 !important;
+                            font-size: 1rem !important;
+                        } 
 
                         > tbody > tr {
                             &:nth-of-type(odd) {
@@ -731,13 +744,24 @@
 
                     }
                 }
+
+                @media(min-width: $lg) {
+                    display: none;
+                }
             }
 
             .plan-section {
                 width: 100%;
                 
                 @media(max-width: $sm) {
-                    display: none;
+                    position: absolute;
+                    bottom: 2px;
+                    left: -1px;
+                    width: auto;
+                    height: 200px;
+                    background: white;
+                    display: flex;
+                    align-items: flex-end;
                 }
 
                 .frame-wrapper {
@@ -835,6 +859,9 @@
                     width: 1000px;
                     align-items: flex-start;
                     position: relative;
+                    @media(max-width: $sm) {
+                        display: none;
+                    }
                 }
 
                 .frame-13 {

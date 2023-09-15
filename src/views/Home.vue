@@ -11,6 +11,7 @@ import PricingCard from "@/components/PricingCard.vue";
 const { getPricingPlans } = useApiService();
 
 const pricingList = ref(null);
+const parsedKeys = ref(null);
 
 const metricTextArray = ref([
     '75% of consumers prefer human interactions to automated interactions.',
@@ -33,8 +34,12 @@ const customerPerkItems = ref([
 
 const fetchPricingData = async() => {
     try {
-        const response  = await getPricingPlans('swQ1ic');
+        const response  = await getPricingPlans('swQ1ic'); // GET api call
         pricingList.value = response.data;
+
+        // Get the property names for the last 3 properties (call_reception, calls_per_week, agent)
+        parsedKeys.value = Object.keys(pricingList.value[0]).slice(-3);  
+        
     } catch (error) {
         console.error(error);
     }
@@ -147,6 +152,26 @@ onMounted(() => {
                             <p>Can't retrieve pricing plans!</p>
                         </div>
                     </div>
+
+                    <div class="pricing-section-container-content--bottom">
+                        <table class="table" v-if="pricingList">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Starter Plan</th>
+                                    <th scope="col">Growth Plan</th>
+                                    <th scope="col">All Access</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(key, index) in parsedKeys" :key="index">
+                                    <td>{{ key }}</td>
+                                    <td v-for="(data, index) in pricingList" :key="index">{{ data[key] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <div class="plan-section">
                         <div class="frame-wrapper">
                             <div class="frame-7">
